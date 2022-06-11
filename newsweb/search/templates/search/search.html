@@ -1,0 +1,30 @@
+{% extends "search/navbar.html" %} 
+
+{% block title %}
+  
+<title>Search</title>
+
+{% endblock %}
+
+{% block content %}
+
+{%for n in news_res%}
+<h1>{{n}}</h1>
+{%endfor%}
+  
+
+  <form action=""  class="form">
+     
+      <input type="text" placeholder="search.." id="key" name="key" class="search">
+      <input type="button" name="search" value="search" id="search"class="search">
+  </form>
+  
+  {% comment %} {% include 'search/news_temp.html' %} {% endcomment %}
+  <div   id="news_store">
+
+  </div>
+  {% include 'search/ajax.html' %}
+{% endblock %}
+
+ 
+ 

@@ -1,0 +1,27 @@
+#slogout{
+    color: rgb(243, 243, 243);
+    width: auto;
+    border-radius: 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    padding: -2px 32px 12px 12px;
+
+    background: rgb(32, 30, 30);
+    width: 89px;
+    height: 34px;
+    text-align: center;
+    font-size: 19px;
+
+
+}
+#slogout a{
+     color: white;
+text-decoration: none;
+
+}
+#slogout a:hover{
+    text-decoration: underline;
+
+
+}
+ 

@@ -1,0 +1,86 @@
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<script>
+    console.log("how are you")
+    let form = document.getElementsByClassName('form')
+    let news_store = document.getElementById('news_store')
+    let keys = document.getElementById('key')
+
+
+
+    //  use ajax for send Request
+    $('#search').click(function () {
+
+        
+
+        my_data = { key: keys.value };
+        $.ajax({
+
+            url: "{% url 'save' %}",
+            method: "POST",
+            data: my_data,
+            success: function (data) {
+                 
+                if (true) {
+                    console.log(data)
+                    // this is for loop for fetch news by api       
+                    news_store.innerHTML=""
+                                    for (let i = 0; i < data.status.news_res.length; i++) {
+                                        const element = data.status.news_res[i];
+                                        console.log(element.title)
+                                        news_store.innerHTML+=`<h1 class="title">${element.title}</h1>
+                    <h3 class="description">${element.description}</h3>
+                    <div class="contain_news">
+                      <div class="body">
+                      <p class="aa"><b>${element.body}</b></p>
+
+                    <li class="read_more">   <a href="${element.url}" target="_blank" > <i class="fa fa-github-square" ></i>Read More</a> </li>
+                      </div>
+                   <img src="${element.image.url}" alt="img news" height="200px" width="200px" class="news_img">
+                       `
+
+                                    }
+
+                    // this is for test data
+
+
+//                     for (let i = 0; i < data.status.news_res.length; i++) {
+//                         const element = data.status.news_res[i];
+
+//                         news_store.innerHTML += `<h1 class="title">${element.title}</h1>
+//         <h3 class="description">${element.description}</h3>
+//         <div class="contain_news">
+//       <div class="body">
+//      <p class="aa"><b>${element.body}</b></p>
+ 
+//     <li class="read_more">   <a href="${element.url}" target="_blank" > <i class="fa fa-github-square" ></i>Read More</a> </li>
+//     </div>
+//     {%load static %}
+    
+//       <img src="/static/${element.image_url} " alt="img news" height="200px" width="200px" class="news_img">
+//    `
+
+//                     }
+                }
+                else {
+
+                    console.log("Daily quata completed")
+                }
+
+
+            }
+
+
+        })
+    })
+
+
+
+
+
+
+
+
+
+</script>

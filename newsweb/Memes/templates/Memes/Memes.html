@@ -1,0 +1,31 @@
+{% extends "search/navbar.html" %} 
+
+{% block title %}
+  
+<title>Memes</title>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container_memes">
+
+<li><a href="http://127.0.0.1:8000/Memes/">Next</a></li>
+<div class="b_cont">
+{% for i in Memes %}
+
+<div class="box">
+{%load static%}
+  <img src="{{i.url}}" alt="memes" width="400px" height="400px">
+  
+ 
+    <input type="submit" name="Add To Favorite" value="Add To Favorite" id="Favorite">
+
+ 
+</div>
+  {% endfor %}
+</div>
+</div>
+{% endblock %}
+
+ 
