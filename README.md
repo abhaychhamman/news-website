@@ -1,10 +1,10 @@
 # news-website
  
 <p align="center">
-<h1> WebPage Image</h1>
+<h1> NewsWebsite Image</h1>
   
   
-  <img src="gallery/1.png" width="1050"   title="website img"><br><br><br><br>
+  <img src="newsweb/gallery/1.png" width="1050"   title="website img"><br><br><br><br>
   <img src="gallery/2.png" width="1050"   title="website img"><br><br><br><br>
   <img src="gallery/3.png" width="1050"   title="website img"><br><br><br><br>
   <img src="gallery/4.png" width="1050"   title="website img"><br><br><br><br>
