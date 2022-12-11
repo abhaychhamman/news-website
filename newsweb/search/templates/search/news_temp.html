@@ -1,0 +1,28 @@
+
+{%for n_news in news_res%}
+
+{%if n_news.image.url != ""   %}
+
+
+<h1 class="title">{{n_news.title}}</h1>
+<h3 class="description">{{n_news.description}}</h3>
+<div class="contain_news">
+  <div class="body">
+  <p class="aa"><b>{{n_news.body}}</b></p>
+ 
+<li class="read_more">   <a href="{{n_news.url}}" target="_blank" > <i class="fa fa-github-square" ></i>Read More</a> </li>
+  </div>
+  <img src="{{n_news.image.url}}" alt="img news" height="200px" width="200px" class="news_img">
+   
+
+</div>
+<br>
+<br>
+<br>
+<hr>
+{% endif %}
+
+
+
+
+{% endfor %}

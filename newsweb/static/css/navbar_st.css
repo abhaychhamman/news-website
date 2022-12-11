@@ -1,0 +1,135 @@
+*{
+
+    margin: 0;
+ 
+    padding: 0;
+    text-align: justify;
+}
+
+body{
+    background-color: rgb(255, 255, 255);
+}
+
+.navbar{
+
+position: fixed;
+font-family: sans-serif;
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+width: 100%;
+/* background-color: rgb(43, 40, 40); */
+height: 40px;
+color: white;
+padding: 0px  ;
+
+
+
+
+}
+.linksNav{
+    width: 66%;
+    display: flex;
+    font-size: 12px;
+    /* background: #7b7171; */
+    justify-content: space-between;
+    height: 200px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 17px 47px;
+    
+}
+
+.logo{
+    
+        text-shadow: 0 0 3px #301b1b, 0 0 5px #7777f7;
+        font-family: 'My Soul', cursive !important;
+        font-weight: 1000;
+        color: rgb(45 163 228);
+        padding: 29px;
+         
+}
+
+
+
+li {
+
+list-style: none;
+text-transform: capitalize;
+
+}
+
+li a{
+color: white;
+text-decoration: none;
+}
+
+i{
+width: 20px;
+height: 20px;
+color: white;
+}
+i:hover{
+width: 20px;
+
+color: rgb(147, 145, 240);
+}
+i:active{
+width: 20px;
+height: 20px;
+color: rgb(233, 32, 32);
+}
+
+
+.margin{
+
+ 
+    width: 200px;
+    height: 72px;
+}
+
+
+.navbar h3 a{
+    color: springgreen;
+}
+.navbar h3 a:hover{
+    color: rgb(255, 115, 0);
+    text-decoration: none;
+      
+}
+
+.navbar h3 a:active{
+    color: rgb(39, 30, 177);
+}
+
+.navbar li a:hover{
+    color: rgb(111, 101, 247);
+    text-decoration: underline;
+}
+
+.footer{
+        
+    background-color:#2b2828;
+    height: 60px;
+    width: 100%;
+    position: relative;
+    top: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.body_footer{
+    display: flex;
+    justify-content: space-around;
+    align-items: end;
+    
+   
+}
+
+.body_footer  a{
+   text-decoration: none;
+   color: white;
+    
+   
+}

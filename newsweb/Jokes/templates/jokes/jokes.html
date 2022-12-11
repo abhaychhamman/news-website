@@ -1,0 +1,40 @@
+{% extends "search/navbar.html" %} 
+
+{% block title %}
+  
+<title>jokes</title>
+ {% comment %} {{jokes}} {% endcomment %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container_memes">
+
+<li><a href="http://127.0.0.1:8000/jokes/">Next</a></li>
+<div class="joke_cont">
+    {% for i in jokes %}
+    
+    <div class="box_joke">
+        
+        {% if i.type == "twopart" %}
+        <div>
+            <h3><b>{{i.setup}}<b></h3>
+                <h3 class="del">{{i.delivery}}</h3>
+            </div>
+            {% else %}
+            
+            <h3><b>{{i.joke}}<b></h3>
+                {% endif %}
+                
+                
+                <input type="submit" name="Add To Favorite" value="Add To Favorite" id="Favorite">
+                
+                
+            </div>
+            {% endfor %}
+        </div>
+        <li><a href="http://127.0.0.1:8000/jokes/">Next</a></li>
+    </div>
+    {% endblock %}
+    
+    

@@ -1,0 +1,94 @@
+.container_memes{
+
+   
+    width: 100%;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+}
+.container_memes li  {
+
+    margin: 10px;
+    text-align: center;
+    width: 100px;
+    background-color: rgb(221, 221, 221);
+    padding: 0px;
+    border-radius: 7px;
+    font-size: 22px;
+    border: 3px solid rgb(128, 126, 126);
+    height: 40px;
+    
+
+}
+
+.container_memes li:hover  {
+
+     
+    background-color: rgb(109, 93, 93);
+   
+
+}
+.container_memes li:active  {
+
+     
+    background-color: rgb(65, 214, 45);
+   
+
+}
+.container_memes li a {
+
+  
+    color: black;
+    font-weight: 400;
+   
+    
+
+}
+.container_memes .box{
+
+    display: flex;
+    flex-direction: column;
+justify-content: center;
+align-items: center;
+margin: 20px;
+     
+}
+.container_memes .b_cont{
+
+    display: flex;
+ 
+}
+
+ #Favorite{
+
+ 
+
+width: auto;
+padding: 1px 9px 1px 9px;
+background: #434848;
+color: #ff7f41;
+display: flex;
+border-radius: 13px;
+border: 2px solid white;
+height: 28px;
+justify-content: center;
+align-items: center;
+
+}
+#Favorite:hover{
+
+ background-color: rgb(42, 42, 54);
+ text-decoration: underline;
+
+}
+#Favorite:active{
+
+    background-color: rgb(148, 86, 86);
+
+}
+.box img{
+
+     margin-bottom: 35px;
+}
