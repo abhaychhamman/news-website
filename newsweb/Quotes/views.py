@@ -1,24 +1,28 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 import json
 import requests
 import random
+
+
+url="https://type.fit/api/quotes/"
+response = requests.request("GET", url)    
+res = json.loads(response.text)
+
+class Quotes_data:
+    data=res
+           
 def quotes(request):
     try:
-        url="https://type.fit/api/quotes"
-        response = requests.request("GET", url)
- 
-        res = json.loads(response.text)
-        # for i in res['memes']:
-
-            # print(i['url'])
+      
        
         result=[]
         for i in range(11):
-            print(random.randrange(len(res)))
-            result.append(res[random.randrange(len(res))])
-        
-        
+            a=random.randrange(len(res))
+            temp=res[a]
+            temp['id']=a
+            result.append(temp)
+       
         context = {
                 'key':'quotes',
                 'quotes':  result 
@@ -34,3 +38,5 @@ def quotes(request):
     # es=response.text.encode('utf-8')
 
     return render(request, "quotes/quotes.html", context)
+
+ 

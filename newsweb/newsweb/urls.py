@@ -19,12 +19,12 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.newsweb, name='search'),
-    path('',include('search.urls')),
+     path('',include('search.urls')),
     path('',include('TrendingNews.urls')),
     path('',include('Memes.urls')),
     path('',include('Jokes.urls')),
     path('',include('Quotes.urls')),
     path('',include('Profile.urls')),
-    path('',include('top_News.urls'))
+    path('',include('top_News.urls')),
+    path('',include('Home.urls')),
 ]

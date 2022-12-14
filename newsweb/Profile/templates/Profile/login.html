@@ -10,26 +10,37 @@
 
 <h3>{{message}}</h3>
 
-<form method="post" novalidate class="form_login">
+ <section class='login' id='login'>
+        <div class='head'>
+        <h1 class='company'>Login</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form"  >
     {% csrf_token %}
-    <h1 id="login_title">Login</h1>
+     
+    <label for="id_username">Username:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_username" name="username" required><br>
+   
+   <label for="id_password">Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password" name="password"  required><br>
+   <a href="#" class='forgot'>Forgot?</a>
 
-    {% for fm in form %}
 
-    <div>{{fm.label_tag}} {{fm}} {{fm.errors|striptags}}</div>
-
-
-
-    {% endfor %}
-
-    <div class="btn"> 
-        <a href="http://127.0.0.1:8000/signup" id="signup_btn_re" >Sign Up</a>
-        <button type="submit" name="submit" id="slogin" value="Register">Register</button>
+ 
+   <br><br>
+    
+    <a href="http://127.0.0.1:8000/signup"   id="registertransfer" class='btn-login' >Register</a>
+    <button class='btn-login' type="submit" name="submit" id="do-login" value="Register">Login</button>
+      </form>
     </div>
+  </section>
 
-</form>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
 
-
-
+  <script>
+  
+  </script>
 
 {% endblock %}

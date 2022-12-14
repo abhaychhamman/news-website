@@ -9,21 +9,27 @@
     flex-direction: column;
  
     justify-content: center;
-    box-shadow: inset 0 4px 23px rgb(26 18 18 / 82%), 0 0 0 1px rgb(60 60 60), 0.3em 0.3em 1em rgb(209 179 179 / 30%);
-}
+ 
+    box-shadow: rgb(17 17 26 / 10%) 0px 8px 24px, rgb(17 17 26 / 10%) 0px 16px 56px, rgb(17 17 26 / 10%) 0px 24px 80px;
+   }
 
 .box_quotes h6{
  
     width: 100%;
     overflow: hidden;
-    font-family: 'pecifico';
+    font-family: unset;
+    font-style: italic;
+    font-weight: 800;
     text-align: end;
   
 }
 .box_quotes h2{
-    font-family: Dancing Script;
+   
+    font-family: 'Tangerine', serif;
     color: crimson;
-    font-weight: 1000;
+    font-weight: 1000; 
+    text-transform: initial;
+    letter-spacing: 3px;
 
 }
 .bottom_Quotes{

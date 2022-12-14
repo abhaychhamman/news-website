@@ -1,23 +1,27 @@
 {% extends "search/navbar.html" %} 
 
 {% block title %}
-  
+
 <title>{{key}}</title>
- {% comment %} {{jokes}} {% endcomment %}
+{% comment %} {{jokes}} {% endcomment %}
 {% endblock %}
 
 {% block content %}
+
+
 
 <div class="container_memes">
     
     <li><a href="http://127.0.0.1:8000/quotes/">Next</a></li>
     {% for i in quotes %}
+      
+      
 
 <div class="box_quotes">
-    <h2>{{i.text}}</h2>
+    <h2  >{{i.text}}</h2>
 
 <div class="bottom_Quotes">
-    <input type="submit" name="Add To Favorite" value="Add To Favorite" id="Favorite">
+    <input type="submit" name="Quotes" id ="{{i.id}}" value="Add To Favorite" class="Favorite" >
          
     {% if i.author ==  None %}
     
@@ -31,6 +35,8 @@
 {% endfor %}
 </div>
 <li><a href="http://127.0.0.1:8000/quotes/">Next</a></li>
+
+
     {% endblock %}
      
  

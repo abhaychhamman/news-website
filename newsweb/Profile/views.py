@@ -8,6 +8,7 @@ from .models import UseProfile,Profile_info
 from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from . import models  
+from Quotes.views import Quotes_data
 # Create your views here.
 def signup(request):
   
@@ -17,7 +18,7 @@ def signup(request):
         if form.is_valid():  
             print(form.data['pimg'])
             form.save()  
-            c=Profile_info(username=form.data['username'], text=form.data['Text'])
+            c=Profile_info(username=form.data['username'], text=form.data['Text'],img=form.data['pimg'])
             c.save()
             print("success")
         
@@ -36,10 +37,22 @@ def signup(request):
 def profile(request):
     print(request.user.is_authenticated)
     if request.user.is_authenticated:
-        return   render(request, 'Profile/Profile.html')
+        c=Profile_info.objects.get(username=request.user)
+        format_quotes=c.QuotesFav.split(":")
+        Favorite_Quotes=[i for i in format_quotes if i!=""]
+        lst=[Quotes_data.data[int(j)] for j in Favorite_Quotes]
+        print(lst)
+            
+
+        return   render(request, 'Profile/Profile.html',context={'FavQuotes':lst})
+
 
     else:
         return HttpResponseRedirect('/login/')   
+
+
+
+
 def login_page(request):
     if request.method=='POST':
         fm=AuthenticationForm(request=request,data=request.POST)
@@ -58,21 +71,5 @@ def login_page(request):
 def logout_page(request):
     logout(request)
     return    HttpResponseRedirect('/login/')
-
-def UserProfile(request):
-    if request.method == 'POST':  
-        print("stat1")
-        username=request.POST.get('Username')
-        fname=request.POST.get('fname')
-        email=request.POST.get('email')
-        password=request.POST.get('password')
-        b=UseProfile(username= username,fullname= fname,email=email,password=password)
-        b.save()
-        print(username,fname,email,password)
-  
-    else:  
-        print("something went wrong")
  
-        
-    return render(request,"Profile/UserProfile.html")
      

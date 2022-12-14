@@ -15,8 +15,13 @@ class UseProfile(models.Model):
     username = models.CharField(max_length=60)
       
 class Profile_info(models.Model):
-    username = models.CharField(max_length=60,default="aksdjf" )
+    username = models.CharField(max_length=60,default="" )
     text = models.CharField(max_length=60)
+    img=models.ImageField(upload_to="User/ProfileImage/" ,default="")
+    QuotesFav=models.TextField(default="")
+    MemesFav=models.TextField(default="")
+    JokesFav=models.TextField(default="")
+
     def __str__(self):
         return str(self.username)
     

@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 from . import views  
+from . import addFav
 
 urlpatterns = [
      
@@ -9,6 +10,7 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
-    path('UserProfile/', views.UserProfile, name='UserProfile'),
-   
+     path('addToFav/', addFav.addToFav, name='addToFav')
+
+      
 ]
