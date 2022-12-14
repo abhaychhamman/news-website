@@ -13,7 +13,7 @@ def Memes(request):
     try:
         
                 
-        url = "https://programming-memes-images.p.rapidapi.com/v1/memes/3499"
+        url = "https://programming-memes-images.p.rapidapi.com/v1/memes/"
 
         headers = {
             "X-RapidAPI-Key": "f7633fe64bmsh23c17940ff62fe5p167e90jsnf500de6aafc7",
@@ -21,15 +21,10 @@ def Memes(request):
         }
 
         response = requests.request("GET", url, headers=headers)
-#  6463
-        print(response)
+ 
         res = json.loads(response.text)
         print(res)
-        # for i in res[:3]:
-            # print(i)
-            # if i['id']== "6463" :
-            # print(i['id'])
-        # print(i['url'])
+       
         context = {
                 'key':'Memes',
                 'Memes': res[:3]

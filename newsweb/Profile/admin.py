@@ -1,7 +1,5 @@
 from django.contrib import admin
-
-from Profile.views import profile
-
+ 
 from .models import Profile,UseProfile,Profile_info
 
 
