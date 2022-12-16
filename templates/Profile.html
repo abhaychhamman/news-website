@@ -1,0 +1,112 @@
+{% extends "Basic.html" %} 
+
+{% load static %}
+{% block title %}
+
+<title>profile</title>
+{% endblock %}
+     
+
+{% block content %}
+  
+
+
+<button type="submit" name="submit" id="slogout" value="Register"><a href="http://127.0.0.1:8000/logout">Logout  <i class="fa fa-sign-out"></i></a></button>
+
+<br>
+<br>
+
+<div class="userDetailProfile">
+
+    <div class="left">
+
+        <img src={{profile_info.img}} alt="userImg" class="userimg">
+
+    </div>
+    <div class="middle">
+            <div class="rowProfile"> <h2 class="userName" >{{profile_info.name}} </h2>  <p class="userAge boldtext">Age: {{profile_info.age}}  </p>  </div>
+            <p class="desc">  {{profile_info.desc}} </p>
+             
+            <div class="rowProfile boldtext"> <p class="userPhone" >Phone : {{profile_info.phone}} </p>  <p class="userEmail"> Email :{{profile_info.email}}  </p>  </div>
+            <div class="userAddress boldtext ">Address : {{profile_info.address}} </div>
+    </div>
+    <div class="right">
+
+        <i class="fa fa-edit" ></i>
+    </div>
+    
+    
+    
+    </div>
+    
+    
+
+<h2>Favorite Quotes  <span class="showFavQuotes show"> <i class="fa fa-eye-slash" ></i> </span> 
+</h2> 
+
+
+
+<hr>
+<div class="container0000 " id="openboxFavQuotes">
+
+
+
+{% for i in FavQuotes %}
+<div class="box_quotes">
+    <h2  >{{i.text}}</h2>
+
+<div class="bottom_Quotes">
+           
+    {% if i.author ==  None %}
+    {% else %}
+    <h6>{{i.author}}</h6>
+    {% endif %}</div>
+</div> 
+
+{% endfor %}
+</div> 
+
+
+
+
+
+
+<br>
+
+
+ 
+</div>
+
+<script>
+
+    let showFavQuotes=document.getElementsByClassName("showFavQuotes")[0]
+    let openboxFavQuotes=document.getElementById('openboxFavQuotes')
+    showFavQuotes.addEventListener('click',()=>{
+
+        console.log(showFavQuotes.classList)
+        if(showFavQuotes.classList[1]=="show"){
+            showFavQuotes.innerHTML=`   <i class="fa fa-eye "  ></i>`
+            showFavQuotes.className="showFavQuotes hide"
+            // showFavQuotes.name="hide"
+            openboxFavQuotes.style.display="flex"
+        }
+        else{
+            
+            // showFavQuotes.name="show"
+            showFavQuotes.innerHTML=` <i class="fa fa-eye-slash " ></i>`
+            showFavQuotes.className="showFavQuotes show"
+            openboxFavQuotes.style.display="none"
+        }
+        
+
+    })
+    
+    
+    
+    </script>
+
+
+    {% endblock %}
+     
+
+        

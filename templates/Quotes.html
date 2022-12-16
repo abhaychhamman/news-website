@@ -1,0 +1,57 @@
+{% extends "Basic.html" %} 
+
+{% block title %}
+
+<title>{{key}}</title> 
+{% endblock %}
+
+{% block content %}
+
+ 
+ 
+
+<div class="container0000">
+    
+    <li><a href="http://127.0.0.1:8000/quotes/">Next</a></li>
+    {% for i in quotes %}
+  
+
+<div class="box_quotes">
+    <h2  >{{i.text}}</h2>
+
+<div class="bottom_Quotes">
+   
+
+        {% if i.id not in  FavQuotes  %}
+            <input type="submit" name="Quotes" id ="{{i.id}}" value="Add To Favorite" class="Favorite" >
+        {% else %}
+
+            <i class="fa fa-heart" ></i>
+
+        {% endif %}
+     
+    <p class="Favdone"> <i class="fa fa-heart" ></i><p>
+    {% if i.author ==  None %}
+    
+    {% else %}
+    <h6>{{i.author}}</h6>
+    {% endif %}</div>
+
+
+</div> 
+
+{% endfor %}
+</div>
+<li><a href="http://127.0.0.1:8000/quotes/">Next</a></li>
+
+
+    {% endblock %}
+     
+ 
+ 
+
+
+ 
+   
+  
+    

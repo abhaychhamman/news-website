@@ -1,0 +1,38 @@
+{% extends "Basic.html" %} 
+
+{% block title %}
+  
+<title>profile</title>
+{% endblock %}
+     
+{% block content %}
+ 
+ 
+
+<form method="post" novalidate class="form_signup">
+    {% csrf_token %}
+    <h1 id="signup_title">Signup</h1>
+
+    {% for fm in form %}
+
+    <div class="label_input"> {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}</div>
+
+    {% endfor %}
+    
+    <input type="file" name="pimg" placeholder="pimg" accept="image/*">
+    <div class="btn"> 
+        <a href="http://127.0.0.1:8000/login" id="slogin_re" >Login</a>
+        <button type="submit" name="submit" id="signup_btn" value="Register">SignUp</button>
+    </div>
+
+</form>
+
+ 
+
+ 
+
+
+{% endblock %}
+     
+
+ 

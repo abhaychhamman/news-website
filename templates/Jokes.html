@@ -1,0 +1,37 @@
+{% extends "Basic.html" %} 
+
+{% block title %}
+  
+<title>jokes</title> 
+{% endblock %}
+
+{% block content %}
+
+<div class="container0000">
+
+<li><a href="http://127.0.0.1:8000/jokes/">Next</a></li>
+<div class="joke_cont">
+    {% for i in jokes %}
+    
+    <div class="box_joke">
+        
+        {% if i.type == "twopart" %}
+        <div>
+            <h3><b>{{i.setup}}<b></h3>
+                <h3 class="del">{{i.delivery}}</h3>
+            </div>
+            {% else %}
+            
+            <h3><b>{{i.joke}}<b></h3>
+                {% endif %}
+          
+                 
+                
+            </div>
+            {% endfor %}
+        </div>
+        <li><a href="http://127.0.0.1:8000/jokes/">Next</a></li>
+    </div>
+    {% endblock %}
+    
+    
