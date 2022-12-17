@@ -5,6 +5,20 @@ from django.contrib.auth.forms import UserCreationForm
 from django.core.exceptions import ValidationError  
 from django.forms.fields import EmailField  
 from django.forms.forms import Form  
+
+
+from django import forms
+from .models import Profile_info
+
+
+class ProfileInfoForm(forms.ModelForm):
+    """Form for the image model"""
+    class Meta:
+        model = Profile_info
+        fields = ('username', 'img','age','address','phone','email','description')
+            
+  
+
   
 class CustomUserCreationForm(UserCreationForm):  
     username = forms.CharField(label='Username', min_length=5, max_length=150 )  

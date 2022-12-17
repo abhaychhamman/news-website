@@ -1,5 +1,5 @@
  
-from django.http import HttpResponse,HttpResponseRedirect
+from django.http import HttpResponse,HttpResponseRedirect,JsonResponse
 from django.shortcuts import redirect, render
  
 from .forms import CustomUserCreationForm
@@ -9,31 +9,79 @@ from django.contrib.auth import login,logout,authenticate
 from django.contrib.auth.forms import AuthenticationForm
 from . import models  
 from Quotes.views import Quotes_data 
+from django.views.decorators.csrf import  csrf_exempt
+ 
+from .forms import ProfileInfoForm
+
 # Create your views here.
 
  
 
 def signup(request):
   
-    if request.method == 'POST':  
-        print("start1")
-        form = CustomUserCreationForm(request.POST)  
-        if form.is_valid():  
-            print(form.data['pimg'])
-            form.save()  
-            c=Profile_info(username=form.data['username'],img=form.data['pimg'])
+    if request.method == 'POST':    
+            c=Profile_info(username=request.POST['username'],email=request.POST['email'],)
+            c.save()
+            
+            c=User.objects.create_user(request.POST['username'],request.POST['email'],request.POST['password'])
             c.save()
             print("success")
         
             return HttpResponseRedirect('/login')
-  
-    else:  
-        form = CustomUserCreationForm()  
-    context = {  
-        'form':form  
-    }         
+   
+    return render(request,"signup.html")
+
+
+
+def ProfileEditor(request):
+    """Process images uploaded by users"""
+    if request.method == 'POST':
+
+        c=Profile_info.objects.get(username=request.user)
+        print(request.FILES['images'])
+        c.img=request.FILES['images']
+        c.username=request.POST['username']
+        c.age=request.POST['age']
+        c.description=request.POST['description']
+        c.phone=request.POST['phone']
+        c.email=request.POST['email']
+        c.save()
+        c=User.objects.get(username=request.user)
+        c.username= request.POST['username']
+        c.save()
+           
+       
+        return HttpResponseRedirect('/profile')
+    else:
+        form = ProfileInfoForm()
+     
         
-    return render(request,"signup.html",context)
+    return render(request, 'ProfileChanger.html', {'form': form})
+
+
+
+@csrf_exempt
+def ProfileData(request):
+     
+
+    if request.method == "POST":
+        if request.user.is_authenticated:
+            c=Profile_info.objects.get(username=request.user)
+            print(c)
+            temp={
+                'username':c.username,
+                'email':c.email,
+                'age':c.age,
+                'address':c.address,
+                'phone':c.phone,
+                'description':c.description,
+                
+                 }
+               
+
+        return JsonResponse(temp )
+    else:
+        return JsonResponse({"status": 'fail'})
 
 
 
@@ -66,7 +114,7 @@ def profile(request):
                 "phone":userCurrent.phone,
                 "address":userCurrent.address,
                 "desc":userCurrent.description,
-                "img":"http://127.0.0.1:8000/"+str(userCurrent.img)
+                "img": userCurrent.img.url
             }
                 }
             

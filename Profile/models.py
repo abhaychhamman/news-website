@@ -16,7 +16,7 @@ class UseProfile(models.Model):
       
 class Profile_info(models.Model):
     username = models.CharField(max_length=60,default="Your Name" )
-    img=models.ImageField(upload_to="ProfileImage/" ,default="logo.svg")
+    img=models.ImageField(upload_to="ProfileImage/" ,default="ProfileImage/logo.svg")
     age=models.IntegerField(default=0)
     address=models.TextField(default="india")
     phone=models.TextField(default="1234567890")

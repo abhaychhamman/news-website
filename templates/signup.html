@@ -1,38 +1,64 @@
-{% extends "Basic.html" %} 
+ 
+
+{% extends "Basic.html" %}
 
 {% block title %}
-  
-<title>profile</title>
+
+<title>Login</title>
 {% endblock %}
-     
+
 {% block content %}
- 
- 
 
-<form method="post" novalidate class="form_signup">
+
+<h3>{{message}}</h3>
+
+ <section class='formPage' id='formPage'>
+        <div class='head'>
+        <h1 class='company'>Signup</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form"  >
     {% csrf_token %}
-    <h1 id="signup_title">Signup</h1>
+     
+    <label for="id_username">Username:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_username" name="username" required><br>
+   
+   <label for="id_password">Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password" name="password"  required><br>
+ 
 
-    {% for fm in form %}
+   <label for="id_password2">Confirm Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password2" name="password2"  required><br>
+ 
 
-    <div class="label_input"> {{fm.label_tag}} {{fm}} {{fm.errors|striptags}}</div>
+   <label for="id_email">Email:</label>
+   <input type="email"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_email" name="email"  required><br>
+ 
 
-    {% endfor %}
+
+ 
+   <br><br>
     
-    <input type="file" name="pimg" placeholder="pimg" accept="image/*">
-    <div class="btn"> 
-        <a href="http://127.0.0.1:8000/login" id="slogin_re" >Login</a>
-        <button type="submit" name="submit" id="signup_btn" value="Register">SignUp</button>
+   <a href="http://127.0.0.1:8000/login"   id="registertransfer" class='btn-login' >Login</a>
+   <button class='btn-login' type="submit" name="submit" id="do-login" value="Register"> Register</button>
+      </form>
     </div>
-
-</form>
-
+  </section>
  
-
- 
-
+  <script>
+  
+  </script>
 
 {% endblock %}
+
+
+
+
+ 
+
+  
      
 
  
