@@ -12,19 +12,57 @@ from Quotes.views import Quotes_data
 from django.views.decorators.csrf import  csrf_exempt
  
 from .forms import ProfileInfoForm
+import random
 
+veri=random.randint(1,1000)
 # Create your views here.
+
+def validateFunc(username,email,password,password2):
+            message =""
+            if len(password)>=8 :
+
+                if password==password2:
+
+                    if User.objects.filter(username=username).count()<1:
+                        print(User.objects.filter(username=username).count())
+                        c=User.objects.create_user(username,email,password)
+                        c.save()
+
+                        c=Profile_info(username=username,email=email)
+                        c.save()
+                    else:
+
+
+                        message+="User already Exists. "
+                else:
+
+
+                    message+="password didn't match to confirm password. "
+                
+            else:
+
+                message+="password length less than 8. "
+            
+            return message
 
  
 
 def signup(request):
-  
+   
     if request.method == 'POST':    
-            c=Profile_info(username=request.POST['username'],email=request.POST['email'],)
-            c.save()
+            username=request.POST['username']
+            email=request.POST['email']
+            password=request.POST['password']
+            password2=request.POST['password2']
+            print(username,email,password,password2)
+
+            if validateFunc(username,email,password,password2)!="":
+                return render(request,"signup.html",context={"message":validateFunc(username,email,password,password2)})
+           
             
-            c=User.objects.create_user(request.POST['username'],request.POST['email'],request.POST['password'])
-            c.save()
+            
+            
+           
             print("success")
         
             return HttpResponseRedirect('/login')
@@ -56,7 +94,7 @@ def ProfileEditor(request):
         form = ProfileInfoForm()
      
         
-    return render(request, 'ProfileChanger.html', {'form': form})
+    return render(request, 'EditProfile.html', {'form': form})
 
 
 

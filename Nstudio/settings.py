@@ -28,6 +28,9 @@ SECRET_KEY = 'django-insecure-m(qvi@m5cmaalxa!a_k@sf60s2^w$-n68qx0j$mzkdie4+2n*x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+if os.getcwd() == '/app':
+    DEBUG = False
+
 ALLOWED_HOSTS = []
 
 
@@ -47,7 +50,8 @@ INSTALLED_APPS = [
     'Jokes',
     'TopNews',
     'TrendingNews',
-    'Memes'
+    'Memes',
+    'ContentCreating'
 ]
 
 MIDDLEWARE = [

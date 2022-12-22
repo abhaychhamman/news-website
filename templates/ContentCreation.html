@@ -1,0 +1,38 @@
+ 
+
+{% extends "Basic.html" %}
+
+{% block title %}
+
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+
+ 
+ <section class='formPage' id='formPage'>
+        <div class='head'>
+        <h1 class='company'> Create {{channelType}}</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form"  enctype="multipart/form-data" >
+    {% csrf_token %}
+     
+   {{form}}
+
+
+ 
+   <br><br>
+    
+      <button class='btn-login' type="submit" name="submit" id="do-login" value="Register">Create</button>
+      </form>
+    </div>
+  </section>
+ 
+  <script>
+  
+  </script>
+
+{% endblock %}

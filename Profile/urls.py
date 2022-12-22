@@ -12,7 +12,7 @@ urlpatterns = [
     path('login/', views.login_page, name='login'),
     path('logout/', views.logout_page, name='logout'),
      path('addToFav/', addFav.addToFav, name='addToFav'),
-     path('uploader/', views.ProfileEditor, name='ProfileEditor'),
+     path('editProfile', views.ProfileEditor, name='ProfileEditor'),
      path('ProfileData/', views.ProfileData, name='ProfileData'),
 
       

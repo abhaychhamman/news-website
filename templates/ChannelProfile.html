@@ -1,0 +1,183 @@
+{% extends "Basic.html" %}
+
+{% block title %}
+
+<title>Channel Name </title>
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<style>
+    .usernameChannel {
+
+
+        text-indent: 10px;
+    }
+
+    .rowProfile {
+
+        display: block;
+    }
+
+    .userDetailProfile {
+
+        width: fit-content;
+        height: auto;
+    }
+
+    .userDetailProfile p {
+        margin-top: 4px;
+    }
+
+
+
+.UserContent a{
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+}
+
+.UserContent h3{
+  height: fit-content;
+}
+.header li{
+    background-color: rgb(232, 116, 49);
+    height: fit-content;
+    padding: 4px 10px;
+    border-radius: 4px;
+
+
+}
+.header {
+    display: flex;
+    justify-content: space-around;
+    height: auto;
+    box-sizing: border-box;
+    margin-left: 25px;
+    border-bottom: 2px solid black;
+    padding: 10px;
+
+}
+
+ 
+
+</style>
+
+<button type="submit" name="submit" id="slogout" value="Register"><a href="/logout">Logout <i
+            class="fa fa-sign-out"></i></a></button>
+
+<br>
+<br>
+
+<div class="userDetailProfile">
+
+    <div class="left">
+
+        <img src={{ChannelProfile.logo.url}} alt="userImg" class="userimg">
+
+    </div>
+    <div class="middle">
+        <div class="rowProfile">
+            <h2 class="userName">{{ChannelProfile.channelName}}</h2>
+            <p class="usernameChannel"> {{ChannelProfile.username}} </p>
+        </div>
+        <p class="desc">Description : {{ChannelProfile.description}} </p>
+
+        <div class="rowProfile boldtext">
+            <p class="userPhone">Catagory Content : {{ChannelProfile.type}}</p>
+        </div>
+
+    </div>
+    <div class="right">
+
+        <a href=" /EditChannel"> <i class="fa fa-edit"></i></a>
+    </div>
+
+
+</div>
+
+<div class="UserContent">
+
+    <div class="header">
+
+        <h3 class="heading">Your Content </h3>
+        <li><a href="/create/{{ChannelProfile.type}}" class="createBtn">Create {{ChannelProfile.type}} </a></li>
+       
+    </div>
+
+    <div class="UserAllcontent">
+
+        {% for i in UserAllContent %}
+        {% if  ChannelProfile.type == 'Memes' %}
+            
+        
+            {{i.titile}}  <br>
+            {{i.memeImage.url}} <br>
+            {{i.memesType}} <br>
+            
+        {% endif %}
+
+        {% if  ChannelProfile.type == 'Quotes' %}
+            
+         
+            {{i.userQuotes}} <br>
+            
+        {% endif %}
+
+
+        {% if  ChannelProfile.type == 'News' %}
+            
+         
+            {{i.newsTitle}} <br>
+            {{i.newsDescription}} <br>
+            {{i.newsContent}} <br>
+            
+        {% endif %}
+
+        {% if  ChannelProfile.type == 'Jokes' %}
+            
+         
+            {{i.type}} <br>
+            {{i.jokesImage.url}} <br>
+           
+            
+        {% endif %}
+            
+        {% endfor %}
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+
+<script>
+
+    let userimg = document.getElementsByClassName('userimg')[0]
+
+    document.addEventListener('click', (e) => {
+
+        if (e.target.className == "userimg") {
+ 
+            userimg.classList.add("zoomImage")
+
+        }
+        else {
+
+            userimg.classList.remove("zoomImage")
+        }
+    })
+
+</script>
+
+
+{% endblock %}

@@ -11,7 +11,7 @@
   
 {{img_obj}}
 
-<button type="submit" name="submit" id="slogout" value="Register"><a href="http://127.0.0.1:8000/logout">Logout  <i class="fa fa-sign-out"></i></a></button>
+<button type="submit" name="submit" id="slogout" value="Register"><a href=" /logout">Logout  <i class="fa fa-sign-out"></i></a></button>
 
 <br>
 <br>
@@ -32,7 +32,7 @@
     </div>
     <div class="right">
 
-       <a href="http://127.0.0.1:8000/uploader"> <i class="fa fa-edit" ></i></a>
+       <a href=" /editProfile"> <i class="fa fa-edit" ></i></a>
     </div>
     
     
@@ -81,6 +81,23 @@
 
     let showFavQuotes=document.getElementsByClassName("showFavQuotes")[0]
     let openboxFavQuotes=document.getElementById('openboxFavQuotes')
+
+    let userimg=document.getElementsByClassName('userimg')[0]
+
+    document.addEventListener('click',(e)=>{
+
+        if(e.target.className=="userimg"){
+
+            console.log("i am abhay")
+            userimg.classList.add( "zoomImage")
+
+        }
+        else{
+
+            userimg.classList.remove("zoomImage")
+        }
+    })
+
     showFavQuotes.addEventListener('click',()=>{
 
         console.log(showFavQuotes.classList)

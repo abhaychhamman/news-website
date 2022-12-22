@@ -1,0 +1,120 @@
+
+{% extends "index.html" %}
+{% block title %}
+
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+ 
+
+<style>
+
+.formPage {
+ 
+    width: 60%;
+    
+
+}
+.form:nth-child(2) {
+    background-color: #055978;
+    min-height: 200px;
+    height: auto;
+}
+ 
+ textarea {
+ 
+    color:white;
+    font-size: 20px;
+
+}
+
+select{
+    margin: 20px;
+    background: none;
+ 
+    border: none;
+    color: white;
+    empty-cells: 20px;
+}
+
+option{
+
+    background-color: #055978;
+ 
+}
+
+.form >p {
+    font-size: 24px;
+}
+
+</style>
+
+
+{{message}}
+ <section class='formPage' id='formPage'>
+    
+       
+
+<div class='form'>
+
+<form method="post" novalidate id="login-form"  >
+    {% csrf_token %}
+     
+
+    <label for="id_Language">Language:</label>
+
+    <select name="source_language" id="id_Language">
+        <option value="hi">Hindi</option>
+        <option value="en">English</option> 
+        <option value="es">spanish</option>
+        <option value="ur">urdu</option>
+        
+    </select>
+
+    
+    
+    
+    <div class="form-group">
+        <textarea class="text" name="ex" id="example" placeholder="Write anything here ...."></textarea>
+        
+    </div>
+    
+    
+    <br><br>
+     
+   <button class='btn-login' type="submit" name="submit" id="do-login" value="Register">Translate</button>
+      
+   <br>
+   <br>
+   <label for="id_Language">Language:</label>
+   
+   <select name="target_language" id="id_Language">
+   <option value="hi">Hindi</option>
+   <option value="en">English</option>
+   <option value="es">spanish</option>
+   <option value="ur">urdu</option>
+  
+   </select>
+
+</form>
+    </div>
+
+   
+    <div class='form'>
+
+        
+
+        <p>{{result}}</p>
+
+
+    </div>
+
+
+  </section>
+ 
+  <script>
+  
+  </script>
+
+{% endblock %}

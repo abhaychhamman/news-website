@@ -1,0 +1,121 @@
+{% extends 'index.html' %} {%block content%}
+
+
+<div class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search Your Dictionary..." aria-label="Search" id="headword">
+    <button class="btn btn-outline-success" type="submit" id="search">Search</button>
+ 
+ </div> 
+
+
+
+
+<hr>
+ <center>
+     <h1 >  All Meanings of your Dictionary </h1>
+     <hr>
+
+ </center>
+
+
+ 
+
+<div id="box">
+
+
+
+    {% for i in data %}
+    <div class="cont" id="cont">
+ 
+        <h1 class="headword"> {{i.key}}</h1> 
+        
+     
+        {% if i.key not in FavMean %}
+         
+            <button type="submit" style="background: none; border:none;"  class="favourite" name={{i.key}}> ❤️</button>
+        {% endif %}
+        
+ 
+        <p class="type"> {{i.type}}</p>
+
+        <p class="mean">{{i.mean}}</p>
+
+        <p class="sunonym"><span> synonyms:</span> {{i.synonym}}</p>
+
+        <p class="antonym"><span> Antonyms:</span> {{i.antonym}}</p>
+        <p> <span> Example:</span> </p>
+        <p class="example"> {{i.example }}</p>
+
+    </div>
+
+    <hr>
+
+    {% endfor %}
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script>
+    let keys = document.getElementById('headword')
+    let cont = document.getElementById('cont')
+    let box = document.getElementById('box')
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+
+    }
+
+
+    $('.favourite').click(function(e){
+        console.log(e.target.name)
+        e.target.style.display="none"
+        $.ajax({
+            url: "{% url 'saveFavourite' %}",
+            method: "POST",
+            data:{'Mean': e.target.name},
+            success: function(data) {
+                 
+
+                    console.log(data)
+            }
+        })
+
+    })
+
+
+    $('#search').click(function() {
+
+
+        my_data = {
+            key: keys.value
+        };
+        $.ajax({
+            url: "{% url 'save' %}",
+            method: "POST",
+            data: my_data,
+            success: function(data) {
+                let b = data.status.example.split("||")
+                let c = ""
+                for (let index = 0; index < b.length; index++) {
+
+                    c += `<p class = "example" ><b>${index+1}.</b>    ${b[index]} </p> `
+                }
+                console.log(data.status.example.split("||"))
+                box.innerHTML = `<div class="cont" id="cont">
+              <h1 class="headword"> ${data.status.key}</h1>
+             
+              <p class="type">  ${data.status.type}</p>
+              <p class="mean"> ${data.status.mean}</p>
+              <p class="sunonym">synonyms: ${data.status.synonym}</p>
+              <p class="antonym">Antonyms:  ${data.status.antonym}</p>
+              <p> Example: </p>${c}`
+
+
+
+
+            }
+        })
+
+    })
+</script>
+
+
+{% endblock %}

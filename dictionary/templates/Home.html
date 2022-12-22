@@ -1,0 +1,198 @@
+{% extends "index.html" %} 
+
+
+{% load static %}
+{% block title %}
+  
+<title>Home</title> 
+{% endblock %}
+
+{% block content %}
+
+
+<style>
+
+.homebtn li{
+
+    
+    transition: 0.3s;
+}
+.homebtn li:hover{
+
+    transform: scale(0.92);
+    transition: 0.3s;
+}
+.homebtn li:active{
+
+    transform: scale(0.82);
+    transition: 0.3s;
+}
+    
+</style>
+ 
+<div class="header">
+
+
+    <div class="left">
+
+            <h3>Provide You Easy to Learn <br>
+               Fast to Memorize
+                </h3>
+
+                <p>Add meaning in your dictionary then click the add meaning Button </p>
+ 
+            <div class="homebtn" style="display: flex;   justify-content: space-around;">
+
+                   <li ><a href="/dict" style="background: #15c39a;">Add Meaning <i class="fa fa-hand-o-right" aria-hidden="true" ></i></a></li>
+                <li ><a href="#abhay"  >Search Word <i class="fa fa-hand-o-right" aria-hidden="true" ></i></a></li>
+            </div>
+
+    </div>
+    <div class="right"> <img src="{% static 'logo.svg' %}" alt=""  class="home_image">
+    </div>
+
+</div>
+
+
+<section class='formPage' id='formPage'>
+    
+       
+
+<div class='form'>
+
+    <form method="post" novalidate id="login-form"  >
+        {% csrf_token %}
+         
+    
+        <label for="id_Language"><h1>Search Any Word Here ........</h1> </label>
+    
+   
+        
+        <div class="form-group">
+            <input type="text" class="text" name="key" id="type"  >     
+        </div>
+        
+      
+         
+       <button class='btn-login' type="submit" name="submit" id="do-login" value="Register">Search Word</button>
+         
+    
+    </form>
+        </div>
+
+        </section>
+
+
+<style>
+
+
+.formPage {
+ 
+ width: 60%;
+
+ font-size: 24px; 
+margin-bottom: 70px; 
+
+}
+
+
+
+
+.formPage input {
+ 
+ 
+ color: white;
+ 
+
+}
+
+
+
+
+.container_word{
+    background: var(--BgPrimary);
+    padding: 0px 50px;
+    width: 90%;
+    margin: 40px auto;
+    box-shadow: inset 7px 3px 14px white, 9px 15px 45px cyan;
+}
+
+.container_word .word00{
+
+    font-size: 106px;
+    font-family: cursive;
+    letter-spacing: 10px;
+    font-weight: 700;
+    text-shadow: 2px 3px 21px mediumblue;
+}
+.container_word .partofSpeech{
+    font-size: 39px;
+    color: yellow;
+    font-family: monospace;
+    font-weight: 900;
+}
+.container_word ol{
+    padding: 0px 0px 0px 67px;
+    font-size: 26px;
+    font-weight: 500;
+}
+
+p > span{
+
+    text-transform:capitalize;
+    color: yellow;
+    margin: 0px 5px ;
+}
+
+
+
+
+
+</style>
+
+
+<div class="container_word" id="abhay">
+    
+    {% for i in data %}
+
+
+    <h1 class="word00">{{i.word}}</h1>
+<!--    
+    {% for audio in i.phonetics %}
+    <p>{{audio.text}}</p>
+    <audio controls>
+            <source src="{{audio.audio}}" type="audio/ogg">
+        
+        </audio>
+        {% endfor %} -->
+
+        <div class="meanings">
+
+            {% for j in i.meanings %}
+             
+                <p class="partofSpeech"> {{j.partOfSpeech}} </p>
+                <ol>
+                {% for k in j.definitions %}
+                    <li class="definition"> {{k.definition}} 
+                   
+                        <p> {% if    k.example   %}
+           
+                           <span>example</span>  {{k.example}}
+                                                       
+                            {% endif %}
+                        </p>
+                    </li>
+                {% endfor %} 
+                </ol>
+            {% endfor %} 
+            
+        </div>
+    {% endfor %} 
+
+</div>
+ 
+      
+
+
+
+{% endblock %}

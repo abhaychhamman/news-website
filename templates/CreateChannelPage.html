@@ -1,0 +1,55 @@
+{% extends "Basic.html" %} 
+
+
+{% load static %}
+{% block title %}
+  
+<title>ConentPage</title> 
+{% endblock %}
+
+{% block content %}
+
+
+<h3>{{message}}</h3>
+
+ <section class='formPage' id='formPage'>
+        <div class='head'>
+        <h1 class='company'>Your Channel Details</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form"  enctype="multipart/form-data">
+    {% csrf_token %}
+     
+    <label for="id_channelName">Channel Name :</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_channelName" name="channelName" required><br>
+   
+     
+    <label for="id_description">description:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_description" name="description" required><br>
+   
+     
+   <label for="id_image">Logo :</label>
+   <input type="file" name="images" id="id_image" accept="images/*">
+   <label for="id_channelType">Channel Type:</label>
+
+    <select name="channelType" id="id_channelType">
+    <option value="News">News</option>
+    <option value="Jokes">Jokes</option>
+    <option value="Quotes">Quotes</option>
+    <option value="Memes">Memes</option>
+    </select>
+
+
+   <br><br>
+     
+   <button class='btn-login' type="submit" name="submit" id="do-login" value="Register" >Create Channel</button>
+    </form>
+    </div>
+  </section>
+ 
+
+
+
+{% endblock %}

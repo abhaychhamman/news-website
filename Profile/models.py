@@ -22,6 +22,7 @@ class Profile_info(models.Model):
     phone=models.TextField(default="1234567890")
     email=models.EmailField(default="example123@.com", max_length=254)
     description=models.TextField(default="i am a programmer")
+    isChannel= models.BooleanField(default=False)
     QuotesFav=models.TextField(default="")
 
     def __str__(self):

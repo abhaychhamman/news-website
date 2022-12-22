@@ -1,0 +1,72 @@
+ 
+ 
+{% extends "index.html" %}
+
+{% block title %}
+
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+
+
+
+<h3>{{message}}</h3>
+
+ <section class='formPage' id='formPage'>
+        <div class='head'>
+        <h1 class='company'>Signup</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form" enctype="multipart/form-data" >
+    {% csrf_token %}
+     
+    <label for="id_username">Username:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_username" name="username" required><br>
+   
+   <label for="id_password">Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password" name="password"  required><br>
+ 
+
+   <label for="id_password2">Confirm Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password2" name="password2"  required><br>
+ 
+
+   <label for="id_email">Email:</label>
+   <input type="email"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_email" name="email"  required><br>
+ 
+   
+    <label for="id_profession">Profession:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_profession" name="profession" required><br>
+   
+    <label for="id_img">Profile Image:</label>
+   <input type="file"  class='text' id="id_img" name="img" accept="images/*" required><br>
+   
+   
+
+ 
+   <br><br>
+    
+   <a href="http://127.0.0.1:8000/login"   id="registertransfer" class='btn-login' >Login</a>
+   <button class='btn-login' type="submit" name="submit" id="do-login" value="Register"> Register</button>
+      </form>
+    </div>
+  </section>
+ 
+  <script>
+  
+  </script>
+
+{% endblock %}
+
+
+
+
+ 
+
+  
+     
+
+ 

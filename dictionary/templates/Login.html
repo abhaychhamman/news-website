@@ -1,0 +1,44 @@
+
+{% extends "index.html" %}
+{% block title %}
+
+<title>Login</title>
+{% endblock %}
+
+{% block content %}
+
+
+<h3>{{message}}</h3>
+
+ <section class='formPage' id='formPage'>
+        <div class='head'>
+        <h1 class='company'>Login</h1>
+        </div>
+       
+           <div class='form'>
+
+<form method="post" novalidate id="login-form"  >
+    {% csrf_token %}
+     
+    <label for="id_username">Username:</label>
+   <input type="text"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_username" name="username" required><br>
+   
+   <label for="id_password">Password:</label>
+   <input type="password"  autofocus="off" autocapitalize="none" autocomplete="off" maxlength="150" class='text' id="id_password" name="password"  required><br>
+   <a href="#" class='forgot'>Forgot?</a>
+
+
+ 
+   <br><br>
+    
+   <a href="http://127.0.0.1:8000/signup"   id="registertransfer" class='btn-login' >Register</a>
+   <button class='btn-login' type="submit" name="submit" id="do-login" value="Register">Login</button>
+      </form>
+    </div>
+  </section>
+ 
+  <script>
+  
+  </script>
+
+{% endblock %}

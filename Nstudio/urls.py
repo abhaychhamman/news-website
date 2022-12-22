@@ -26,8 +26,8 @@ urlpatterns = [
     path('', include('Jokes.urls')),
     path('', include('TopNews.urls')),
     path('', include('TrendingNews.urls')),
+    path('', include('ContentCreating.urls')),
     path('', include('Memes.urls')),
-    path('', views.HomePage),
- 
+   
     
 ]
